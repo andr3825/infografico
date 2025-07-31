@@ -30,9 +30,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(payload)
             });
             const result = await response.json();
-            const text = result.candidates[0].content.parts[0].text;
-            planText.innerText = text;
-            planOutput.classList.remove('hidden');
+            
+            // Verificação de erro melhorada
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                planText.innerText = text;
+                planOutput.classList.remove('hidden');
+            } else {
+                planText.innerText = `Erro ao gerar plano: A resposta da API não contém texto válido. Por favor, tente novamente com uma descrição diferente.`;
+                planOutput.classList.remove('hidden');
+            }
+
         } catch (error) {
             planText.innerText = `Erro ao gerar plano: ${error.message}`;
             planOutput.classList.remove('hidden');
