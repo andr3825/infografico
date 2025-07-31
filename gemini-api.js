@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const planOutput = document.getElementById('plan-output');
     const planText = document.getElementById('plan-text');
 
+    // Função de IA desativada para evitar erros.
+    // O código abaixo foi comentado para que não seja executado,
+    // permitindo que o restante da página funcione normalmente.
+
+    /*
     async function generatePlan() {
         const userPrompt = problemInput.value;
         if (!userPrompt) {
@@ -52,4 +57,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     generatePlanBtn.addEventListener('click', generatePlan);
+    */
 });
